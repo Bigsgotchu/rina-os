@@ -5,6 +5,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -22,13 +25,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create Release
+      - name: Upload Release Artifact
         uses: softprops/action-gh-release@v2
         with:
-          name: Release ${{ github.ref_name }}
+          name: Rina OS Workspace ${{ github.ref_name }}
+          files: |
+            package.json
           body: |
-            ## Rina OS Dev Workspace Release
+            ## Rina OS Dev Workspace Release ${{ github.ref_name }}
             
-            Automated release from tag `${{ github.ref_name }}`
-          draft: false
-          prerelease: false
+            Automated release from your personal software factory.
