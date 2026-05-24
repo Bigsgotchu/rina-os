@@ -30,3 +30,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: CI OK
+        run: echo "CI OK - safe to merge"
