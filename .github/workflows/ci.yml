@@ -19,8 +19,8 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Enable pnpm
-        run: corepack enable
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -33,6 +33,3 @@ jobs:
 
       - name: Build
         run: pnpm build
-
-      - name: Verify build output
-        run: ls -la dist 2>/dev/null || ls -la build 2>/dev/null || echo "No build directory (acceptable for workspace)"
